@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> num_map;  // map from number to its index
+
+        for (int i = 0; i < nums.size(); ++i) {
+            int complement = target - nums[i];
+            if (num_map.count(complement)) {
+                return {num_map[complement], i};
+            }
+            num_map[nums[i]] = i;
+        }
+
+        return {}; // In case there's no solution, though the problem guarantees one
+    }
+};
